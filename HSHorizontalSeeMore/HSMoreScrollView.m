@@ -24,6 +24,8 @@
 @end
 
 #define SCREEN_WIDTH       ([UIScreen mainScreen].bounds.size.width)
+/// 形变的程度
+#define Change_Distance    32
 
 @implementation HSMoreScrollView
 
@@ -82,6 +84,7 @@
 
         _bezierPath = [UIBezierPath bezierPath];
         [_bezierPath moveToPoint:CGPointMake(0, 0)];
+        //----- 弧线 -----//
         [_bezierPath addQuadCurveToPoint:CGPointMake(0, self.frame.size.height) controlPoint:CGPointMake(0, self.frame.size.height / 2)];
         [_bezierPath addLineToPoint:CGPointMake(_contentSizeWidth, self.frame.size.height)];
         [_bezierPath addLineToPoint:CGPointMake(_contentSizeWidth, 0)];
@@ -133,9 +136,9 @@
         pointControlX = 0;
     } else {
         
-        if (self.contentOffset.x - _maxCanBig > 32) {
-            fixPointControlX = (self.contentOffset.x - _maxCanBig) - 32;
-            pointControlX = - (32 - fixPointControlX);
+        if (self.contentOffset.x - _maxCanBig > Change_Distance) {
+            fixPointControlX = (self.contentOffset.x - _maxCanBig) - Change_Distance;
+            pointControlX = - (Change_Distance - fixPointControlX);
             
             self.showMoreLabel.frame = CGRectMake(10 + fixPointControlX, self.showMoreLabel.frame.origin.y, self.showMoreLabel.frame.size.width, self.showMoreLabel.frame.size.height);
             

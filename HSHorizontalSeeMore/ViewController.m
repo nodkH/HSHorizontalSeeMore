@@ -23,7 +23,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.scrollView = [[HSMoreScrollView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 100)];
+    UILabel *scrollLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 100, self.view.frame.size.width, 60)];
+    scrollLabel.textColor = [UIColor blackColor];
+    scrollLabel.text = @"scroll view";
+    [self.view addSubview:scrollLabel];
+    
+    self.scrollView = [[HSMoreScrollView alloc] initWithFrame:CGRectMake(0, scrollLabel.frame.origin.y + scrollLabel.frame.size.height + 10, self.view.frame.size.width, 100)];
     self.scrollView.layer.borderColor = [UIColor redColor].CGColor;
     self.scrollView.layer.borderWidth = 1;
     //    self.scrollView.backgroundColor = [UIColor redColor];
@@ -54,13 +59,18 @@
     self.scrollView.contentSizeWidth = contentSizex;
     
     
+    UILabel *collectionLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, self.scrollView.frame.origin.y + self.scrollView.frame.size.height + 50, self.view.frame.size.width, 60)];
+    collectionLabel.textColor = [UIColor blackColor];
+    collectionLabel.text = @"collection view";
+    [self.view addSubview:collectionLabel];
+    
     UICollectionViewFlowLayout *layout = [UICollectionViewFlowLayout new];
     layout.itemSize = CGSizeMake(self.view.frame.size.width / 4, 100);
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 10;
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    self.collectionView = [[HSHorizontalSeeMoreCollectionView alloc] initWithFrame:CGRectMake(0, self.scrollView.frame.origin.y + self.scrollView.frame.size.height + 50, self.view.frame.size.width, 100) collectionViewLayout:layout];
+    self.collectionView = [[HSHorizontalSeeMoreCollectionView alloc] initWithFrame:CGRectMake(0, collectionLabel.frame.origin.y + collectionLabel.frame.size.height + 10, self.view.frame.size.width, 100) collectionViewLayout:layout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;

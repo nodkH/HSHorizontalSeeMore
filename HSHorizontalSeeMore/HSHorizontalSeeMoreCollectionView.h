@@ -12,8 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HSHorizontalSeeMoreCollectionView : UICollectionView
 
+/// 要显示在哪个位置
 @property (nonatomic , assign) CGFloat contentSizeWidth;
 
+/// 需要调用
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 @end
 

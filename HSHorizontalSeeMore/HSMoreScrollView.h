@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HSMoreScrollView : UIScrollView
 
-
+/// 要显示在哪个位置
 @property (nonatomic , assign) CGFloat contentSizeWidth;
 
 @end
