@@ -12,8 +12,11 @@
 #import "CollectionViewCell.h"
 
 @interface ViewController () <UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+// 创建继承自 HSMoreScrollView 的 scrollView
 @property (nonatomic , strong) HSMoreScrollView *scrollView;
 
+// 创建继承自 HSHorizontalSeeMoreCollectionView 的 collectionView
 @property (nonatomic , strong) HSHorizontalSeeMoreCollectionView *collectionView;
 @end
 
@@ -75,9 +78,9 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.view addSubview:self.collectionView];
-    self.collectionView.contentSizeWidth = 5 * layout.itemSize.width + (4 * 10);
-    
     [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"CollectionViewCell"];
+    
+    self.collectionView.contentSizeWidth = self.collectionView.collectionViewLayout.collectionViewContentSize.width;
 }
 
 
